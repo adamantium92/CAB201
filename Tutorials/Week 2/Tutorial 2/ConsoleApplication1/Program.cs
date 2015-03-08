@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 namespace WTH_Calculator
 {
     /*
-    * Calculates waist to height ratio 
-    * as the same units of measurement is used for the waist and height.
+    * Calculates waist to height ratio.
+    * From the same units of measurement used for the waist and height.
     * Then determines the users risk based on the gender and ratio. 
+    * User will then be prompted if they wish to repeat the calculation.
     * 
     *  Author: Adam Gibbon, 8090190
     *  Date: March 2015
@@ -29,22 +30,22 @@ namespace WTH_Calculator
             // Display welcome message
             DisplayWelcomeMessage();
            
-            // Begin calculation process, repeat if they answer y(yes)
+            // Begin calculation process, repeat if answer is y(yes)
             do
             {
                 // Prompt for waist measurement
                 int waist = GetMeasurement("waist", WAIST_MIN);
                 // Prompt for height mesaurement
                 int height = GetMeasurement("height", HEIGHT_MIN);
-                // Promt for gender
+                // Prompt for gender
                 int gender = GetGender();
-                // Calculate ratio from waist & height
+                // Calculate wasit to height ratio
                 double ratio = CalculateRatio(waist, height);
                 // Calculate risk category
                 DetermineRisk(ratio, gender, MALE_RISK, FEMALE_RISK);   
             } while (RepeatMessage());
             
-            // termination message
+            // Termination message
             DisplayTerminationMessage();
         }
 
@@ -55,7 +56,6 @@ namespace WTH_Calculator
             Console.Write("\t\t Welcome to Waist to Height Ratio Caclulator.\n");
         }
 
-        // promtp user for waist measurement
         static int GetMeasurement(string bodyMeasurement, int minValue)
         {
             // promt user for a measurement 
@@ -66,7 +66,7 @@ namespace WTH_Calculator
             do
             {
                 // get a valid (numeric) input
-                measurement = GetValidInput();
+                measurement = GetValidIntInput();
                 if (measurement < minValue)
                 {
                     Console.WriteLine("Error: The minimum measurement for " + bodyMeasurement + " is: " + minValue + "\nPlease re-enter a vaild: " + bodyMeasurement + " in cms");
@@ -76,7 +76,7 @@ namespace WTH_Calculator
             return measurement;
         }
 
-        static int GetValidInput()
+        static int GetValidIntInput()
         {
             int validInteger = 0;
             bool isValidValue = true;
