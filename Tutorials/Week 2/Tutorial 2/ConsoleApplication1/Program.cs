@@ -108,14 +108,17 @@ namespace WTH_Calculator
             {
                 string inputString = Console.ReadLine();
 
-                // parse into to an int
-                isValidValue = int.TryParse(inputString, out gender);
+                // Convert the input into an int
+                int.TryParse(inputString, out gender);
+               
+                // gender = (inputString); 
 
-                // if input is not an int - output an error message
+                /*/ if input is not an int - output an error message
                 if (!isValidValue)
                 {
                     Console.WriteLine("Error: Please enter an integer.");
                 }
+                */
 
                 // Check if input is a 1 or 2
                 isValidValue = (gender.Equals(1) | gender.Equals(2));
@@ -123,7 +126,7 @@ namespace WTH_Calculator
                 // If false - output an error message
                 if (!isValidValue)
                 {
-                    Console.WriteLine("Error: Please enter either 1 or 2.");
+                    Console.WriteLine("Error (Invalid input): Please enter either 1 or 2.");
                 }
             } while (!isValidValue);
 
