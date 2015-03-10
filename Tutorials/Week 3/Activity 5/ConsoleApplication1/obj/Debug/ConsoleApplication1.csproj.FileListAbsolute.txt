@@ -1,0 +1,5 @@
+C:\Workspace\CAB201\Tutorials\Week 3\Activity 5\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Workspace\CAB201\Tutorials\Week 3\Activity 5\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Workspace\CAB201\Tutorials\Week 3\Activity 5\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Workspace\CAB201\Tutorials\Week 3\Activity 5\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Workspace\CAB201\Tutorials\Week 3\Activity 5\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
