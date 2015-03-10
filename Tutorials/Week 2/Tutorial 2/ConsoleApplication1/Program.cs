@@ -48,7 +48,6 @@ namespace WTH_Calculator
             // Termination message
             DisplayTerminationMessage();
         }
-
        
         static void DisplayWelcomeMessage()
         {
@@ -58,11 +57,12 @@ namespace WTH_Calculator
 
         static int GetMeasurement(string bodyMeasurement, int minValue)
         {
+            // Variables
+            int measurement = 0;
+
             // promt user for a measurement 
             Console.Write("\n\nEnter your " + bodyMeasurement + " measurement in cms: ");
 
-            // Variables
-            int measurement;
             do
             {
                 // get a valid (numeric) input
@@ -80,6 +80,7 @@ namespace WTH_Calculator
         {
             int validInteger = 0;
             bool isValidValue = true;
+           
             do
             {
                 // read input
@@ -91,7 +92,7 @@ namespace WTH_Calculator
                 // if invalid input - output an error message
                 if (!isValidValue)
                 {
-                    Console.WriteLine("Error: Please enter an integer.");
+                    Console.WriteLine("Error (Invalid Input): Please enter an integer.");
                 }
             } while (!isValidValue);
 
@@ -100,10 +101,12 @@ namespace WTH_Calculator
 
         static int GetGender()
         {
-            // promt user for a gender
-            Console.Write("\n\nAre you: \n\t 1) Male \n\t 2) Female \n\n\t enter your option<1 or 2>: ");
             int gender = 0;
             bool isValidValue = true;
+            
+            // promt user for a gender
+            Console.Write("\n\nAre you: \n\t 1) Male \n\t 2) Female \n\n\t enter your option<1 or 2>: ");
+            
             do
             {
                 string inputString = Console.ReadLine();
@@ -111,22 +114,13 @@ namespace WTH_Calculator
                 // Convert the input into an int
                 int.TryParse(inputString, out gender);
                
-                // gender = (inputString); 
-
-                /*/ if input is not an int - output an error message
-                if (!isValidValue)
-                {
-                    Console.WriteLine("Error: Please enter an integer.");
-                }
-                */
-
                 // Check if input is a 1 or 2
                 isValidValue = (gender.Equals(1) | gender.Equals(2));
 
                 // If false - output an error message
                 if (!isValidValue)
                 {
-                    Console.WriteLine("Error (Invalid input): Please enter either 1 or 2.");
+                    Console.WriteLine("Error (Invalid input): Please indicate yor gender \n be entering either 1 (male) or 2 (female).");
                 }
             } while (!isValidValue);
 
@@ -135,7 +129,7 @@ namespace WTH_Calculator
 
         static double CalculateRatio(int waist, int height)
         {
-            double ratio = 0;
+            double ratio = 0.0;
 
             // Convert int inputs to a double
             double convertedWaist = Convert.ToDouble(waist);
@@ -153,20 +147,20 @@ namespace WTH_Calculator
 
         static void DetermineRisk(double ratio, int gender, double maleRisk, double femaleRisk)
         {
-            double risk = 0.0;
+            double riskLevel = 0.0;
 
-            // Determine the risk number from the gender
+            // Determine the risk level from the gender
             if (gender.Equals(1))
             {
-                risk = maleRisk;
+                riskLevel = maleRisk;
             }
             else
             {
-                risk = femaleRisk;
+                riskLevel = femaleRisk;
             }
 
             // Determine the level of risk
-            if (ratio >= risk)
+            if (ratio >= riskLevel)
             {
                 // Display  high risk
                 Console.WriteLine("\n\n Which indicates that you are at high risk \n of developing obesity related cardiovascular diseases.");
@@ -180,11 +174,12 @@ namespace WTH_Calculator
 
         static bool RepeatMessage()
         {
-            // Ask user if they wish to repeat the calculation
-            Console.Write("\n\nWould you like to repeat the calculation? <Enter Y or N>: ");
-            //string userInput = "";
             bool answer = true;
             bool isValidValue = true;
+
+            // Ask user if they wish to repeat the calculation
+            Console.Write("\n\nWould you like to repeat the calculation? <Enter Y or N>: ");
+          
             do
             {
                 string inputString = Console.ReadLine();
