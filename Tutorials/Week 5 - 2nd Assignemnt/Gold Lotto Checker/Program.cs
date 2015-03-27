@@ -38,7 +38,7 @@ namespace Gold_Lotto_Checker
             DisplayDrawNumbers(drawNumbers);
 
             // Find and display winning and supplementary numbers
-
+            FindWinningNumbers(drawNumbers, lottoNumbers);
 
 
             ExitProgram();
@@ -78,6 +78,87 @@ namespace Gold_Lotto_Checker
             }//end DipslayNumbers
 
             return number;
+        }
+
+        static void FindWinningNumbers(int[] drawNumbers, int[][] lottoNumbers)
+        {
+            // Find winning numbers in drawNumbers
+            int[] winningNumbers = FindWinNumbers(drawNumbers, 6);
+            // Find supplementary numbers in drawNumbers
+            int[] suppNumbers = FindSuppNumbers(drawNumbers, 2);
+            // Find winning and supplementary for each lottoNumbers
+            DisplayMatchNumbers(lottoNumbers, winningNumbers, suppNumbers);
+
+        }//end DisplayDrawArray
+
+        static int[] FindWinNumbers(int[] numbers, int position)
+        {
+            // int winningPosition = 5;
+            // int winningSupp = 0;
+            int[] suppNumbers = new int[position];
+
+            for (int i = 0; i < position; i++)
+            {
+                suppNumbers[i] = numbers[i];
+                //Console.Write("{0,4}", numbers[i]);
+
+            }
+
+            return suppNumbers;
+        }
+
+        static int[] FindSuppNumbers(int[] numbers, int position)
+        {
+            // int winningPosition = 5;
+            // int winningSupp = 0;
+           int[] suppNumbers = new int[position];
+
+            for (int i = 0; i < position; i++)
+            {
+                suppNumbers[i] = numbers[numbers.Length - position + i];
+                //Console.Write("{0,4}", numbers[i]);
+
+            }
+            
+            return suppNumbers;
+        }
+
+        static void DisplayMatchNumbers(int[][] lottoNumbers, int[] winningNumbers, int[] suppNumbers)
+        {
+           // for each array(game) in lottoNumbers, search for winning numbers, search for supp numbers
+
+           // For each game
+            for (int i = 0; i < lottoNumbers.Length; i++)
+            {
+               // search for winning numbers
+                int countWinNumbers = MatchNumbers(lottoNumbers[i], winningNumbers);
+               // search for supp numbers
+                int countSuppNumbers = MatchNumbers(lottoNumbers[i], suppNumbers);
+               // Output the results
+                Console.Write("\n\nfound " + countWinNumbers + " winning numbers and " + countSuppNumbers + " supplementary numbers in Game: " + (i + 1));
+            }//end DipslayNumbers
+
+        }
+
+        static int MatchNumbers(int[] game, int[] numbers)
+        {
+            int countMatchedNumbers = 0;
+            // int winningPosition = 5;
+            // int winningSupp = 0;
+
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                for (int j = 0; j < game.Length; j++)
+                {
+                    if (numbers[i] == game[j])
+                    {
+                        countMatchedNumbers += 1;
+                    }
+                }
+            }
+
+            return countMatchedNumbers;
         }
 
         static void ExitProgram()
