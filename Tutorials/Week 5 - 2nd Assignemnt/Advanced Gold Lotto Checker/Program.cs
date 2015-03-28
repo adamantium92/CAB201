@@ -5,8 +5,24 @@ using System.Text;
 using System.Threading;
 
 namespace Advanced_Gold_Lotto_Checker {
-    class Program {
+   /*
+    * Simulates a round of gold lotto by creating both games and draw numbers
+    * Generates X games (Length of lottoNumbers - 12) each game containing  6 random numbers between 1 and 45
+    * Displays both games and draw numbers
+    * Then displays how many winning and supplementary numbers for each game 
+    *
+    * 
+    *  Author: Adam Gibbon, 8090190
+    *  Date: March 2015
+    *  
+    */
 
+    class Program {
+        // Constant variables
+        const int LOTTO_MIN = 1;
+        const int LOTTO_MAX = 45;
+        const int WIN_NUM = 6;
+        const int SUPP_NUM = 2;
         static Random randomGen = new Random();
        
         static void Main() {
@@ -30,200 +46,171 @@ namespace Advanced_Gold_Lotto_Checker {
 
             int[] drawNumbers = new int[8];
 
-            // Generate 6 unique random numbers between 1 and 45 for each lottoNumbers            
-            int[][] GeneratedLottoNumbers = GenerateLottoGames(lottoNumbers);
+            // Populate each game in lottoNumbers with an array containing 6 random unique numbers            
+            lottoNumbers = GenerateLottoGames(lottoNumbers);
 
-            // Generate 8 unique random numbers between 1 and 45 for drawNumbers
-            int[] GeneratedDrawNumbers = GenerateGameNumbers(drawNumbers.Length);
-
+            // Generate 8 unique random numbers
+            drawNumbers = GenerateUniqueNumber(drawNumbers, drawNumbers[0]);
 
             // Display welcome message
-            DisplayWelcomeMessage();
+            DisplayMessage("Welcome to Lotto Checker");
 
-            // Display lotto numbers
-            DisplayLottoNumbers(GeneratedLottoNumbers);
+            // Display each lotto games' numbers
+            DisplayLottoNumbers(lottoNumbers);
 
             // Display draw numbers
-            DisplayDrawNumbers(GeneratedDrawNumbers);
+            DisplayDrawNumbers(drawNumbers);
 
-            // Find and display winning and supplementary numbers
-            FindWinningNumbers(GeneratedDrawNumbers, GeneratedLottoNumbers);
+            // Find winning numbers in drawNumbers
+            int[] winningNumbers = FindWinOrSuppNumbers(drawNumbers, WIN_NUM, true);
 
-            // Execute existing code
+            // Find supplementary numbers in drawNumbers
+            int[] suppNumbers = FindWinOrSuppNumbers(drawNumbers, SUPP_NUM, false);
+
+            // Find each winning and supplementary number in each lottoNumbers game
+            DisplayMatchNumbers(lottoNumbers, winningNumbers, suppNumbers);
+
+            // Display goodbye message
+            DisplayMessage("Thanks for using Lotto Checker");
 
             ExitProgram();
         }//end Main
 
-        static int[][] GenerateLottoGames(int[][] lottoGames)
-        {
-            int[][] generatedLottoGames = new int[lottoGames.Length][];
+        static int[][] GenerateLottoGames(int[][] lottoGames) {
+            for (int i = 0; i < lottoGames.Length; i++) {
+                
+                // For each game in lottoGames generate 6 random unique numbers
+                lottoGames[i] = GenerateUniqueNumber(lottoGames[i], lottoGames[i][0]);
+            } //end generation of numbers for each lotto game
+         
+            return lottoGames;
+        } //end GenerateLottoGames
 
-            for (int i = 0; i < lottoGames.Length; i++)
-            {
-                generatedLottoGames[i] = GenerateGameNumbers(lottoGames[i].Length);
-            }//end DipslayNumbers
-
-            return generatedLottoGames;
-        }
-
-      
-
-        static int[] GenerateGameNumbers(int numberSize)
-        {
-            int[] generatedLottoNumbers = new int[numberSize];
+       static int[] GenerateUniqueNumber(int[] gameNumbers, int position) {            
            
-            for (int i = 0; i < numberSize; i++)
-            {
-                int uniqueNumber = randomGen.Next(1, 46);
-                generatedLottoNumbers[i] = uniqueNumber;
-            }//end DipslayNumbers
+           // Start at the specified position in the array
+           for (int i = position; i < gameNumbers.Length; i++) {
+               
+               // Generate a random number for the position
+                gameNumbers[i] = randomGen.Next(LOTTO_MIN, LOTTO_MAX + 1);
 
-            generatedLottoNumbers = ReplaceDuplicates(generatedLottoNumbers);
-
-            return generatedLottoNumbers;
-        }
-
-       static int[] ReplaceDuplicates(int[] gameNumbers)
-        {            
-            // Find the first element
-            // Search each element in the array 
-            // If no match repeat until everything has been searched
-            // If match return true
-            for (int i = 0; i < gameNumbers.Length; i++)
-            {
-                for (int j = i + 1; j < gameNumbers.Length; j++)
-                {
-                    if (gameNumbers[j] == gameNumbers[i])
-                    {
-                        int uniqueNumber = randomGen.Next(1, 46);
-                        gameNumbers[i] = uniqueNumber;
-                        ReplaceDuplicates(gameNumbers);
-                    }
+                for (int j = 0; j < gameNumbers.Length; j++) {
+                    
+                    // Check if the generated number already exists in teh array
+                    if ((gameNumbers[i] == gameNumbers[j]) && j != i) {
+                        
+                        // If a duplicate is found, restart the processes from the current position
+                        GenerateUniqueNumber(gameNumbers, i);
+                    }             
                 }
             }
+            
+           return gameNumbers;
+        } //end GenerateUniqueNumber
 
-            return gameNumbers;
+        static void DisplayMessage(string message) {
+            
+            // Display the message passed in
+            Console.Write("\n\n{0, 40}\n\n\n\n\n", message);
+        }//end DisplayMessage
 
-        } //end FindDuplicates
-
-        static void DisplayWelcomeMessage()
-        {
-            Console.Write("{0,6}\n\n", "Welcome to Lotto Checker!");
-
-        } //end DisplayWelcomeMessage
-
-        static void DisplayLottoNumbers(int[][] numbers)
-        {
+        static void DisplayLottoNumbers(int[][] lottoNumbers) {
             Console.Write("Your lotto numbers are:\n\n");
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                //DisplayNumbers(numbers[i]);
-                Console.Write("{0}{1,-2}\n\n", "Game " + (i + 1) + ": ", DisplayNumbers(numbers[i]));
-                //Console.Write("{0,1}\n", "Game " + (i + 1) + ":", numbers[i][j]);
+           
+            // Display each game in lottoNumbers
+            for (int i = 0; i < lottoNumbers.Length; i++) {
+               
+                // Sort the array from smallest to largest
+                Array.Sort(lottoNumbers[i]);
+                
+                // Pass in each game array to return a string containing the numbers
+                Console.Write("{0, 2}{1,4}{2,12}\n\n", "Game", (i + 1) + ":", DisplayNumbers(lottoNumbers[i]));
             }
         }//end DisplayLottoNumbers
 
-        static void DisplayDrawNumbers(int[] numbers)
-        {
-            Console.Write("\n\n\nLotto draw numbers are:\n\n");
-            Console.Write("{0,-4}", " " + DisplayNumbers(numbers));
+        static void DisplayDrawNumbers(int[] numbers) {
+            Console.Write("\n\n\n{0}\n\n", " Lotto draw numbers are:");
+            
+            // Pass in the draw number array to return a string containing the numbers
+            Console.Write("{0}\n", DisplayNumbers(numbers));
         }//end DisplayDrawArray
 
-        static string DisplayNumbers(int[] numbers)
-        {
+        static string DisplayNumbers(int[] numbers){
             string number = "";
 
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                number += numbers[i] + " ";
-                //Console.Write("{0,4}", numbers[i]);
-            }//end DipslayNumbers
+            for (int i = 0; i < numbers.Length; i++) {
+                
+                // Loop through the array and add each value to the number varaiable
+                number += String.Format("{0, 4}", numbers[i]);
+            }
 
             return number;
-        }
+        }//end DipslayNumbers
 
-        static void FindWinningNumbers(int[] drawNumbers, int[][] lottoNumbers)
-        {
-            // Find winning numbers in drawNumbers
-            int[] winningNumbers = FindWinNumbers(drawNumbers, 6);
-            // Find supplementary numbers in drawNumbers
-            int[] suppNumbers = FindSuppNumbers(drawNumbers, 2);
-            // Find winning and supplementary for each lottoNumbers
-            DisplayMatchNumbers(lottoNumbers, winningNumbers, suppNumbers);
+        static int[] FindWinOrSuppNumbers(int[] numbers, int position, bool type) {
+            
+            // Create an array to store the winning numbers
+            int[] winOrSuppumbers = new int[position];
+            int j = 0;
 
-        }//end DisplayDrawArray
-
-        static int[] FindWinNumbers(int[] numbers, int position)
-        {
-            // int winningPosition = 5;
-            // int winningSupp = 0;
-            int[] suppNumbers = new int[position];
-
-            for (int i = 0; i < position; i++)
-            {
-                suppNumbers[i] = numbers[i];
-                //Console.Write("{0,4}", numbers[i]);
-
+            // Check if searching for winning or supp numbers and assign the starting position
+            if (type == true) {
+                j = 0;
+            }
+            else {
+                j = numbers.Length - position;
             }
 
-            return suppNumbers;
-        }
-
-        static int[] FindSuppNumbers(int[] numbers, int position)
-        {
-            // int winningPosition = 5;
-            // int winningSupp = 0;
-            int[] suppNumbers = new int[position];
-
-            for (int i = 0; i < position; i++)
-            {
-                suppNumbers[i] = numbers[numbers.Length - position + i];
-                //Console.Write("{0,4}", numbers[i]);
-
+            // Itterate through the numbers array adding either the first WIN_NUM (6) or last SUPP_NUM (2) 
+            for (int i = 0; i < position; i++) {
+                
+                // Add the number to the array
+                winOrSuppumbers[i] = numbers[j + i];
             }
+           
+            return winOrSuppumbers;
+        }//end FindWinOrSuppNumbers
 
-            return suppNumbers;
-        }
+        static void DisplayMatchNumbers(int[][] lottoNumbers, int[] winningNumbers, int[] suppNumbers) {
 
-        static void DisplayMatchNumbers(int[][] lottoNumbers, int[] winningNumbers, int[] suppNumbers)
-        {
-            // for each array(game) in lottoNumbers, search for winning numbers, search for supp numbers
-
-            // For each game
-            for (int i = 0; i < lottoNumbers.Length; i++)
-            {
-                // search for winning numbers
+            // Itterate through each game in lottoNumbers
+            for (int i = 0; i < lottoNumbers.Length; i++) {                
+               
+                // search for winning numbers in game i
                 int countWinNumbers = MatchNumbers(lottoNumbers[i], winningNumbers);
-                // search for supp numbers
+                
+                // search for supp numbers in game i
                 int countSuppNumbers = MatchNumbers(lottoNumbers[i], suppNumbers);
+               
                 // Output the results
-                Console.Write("\n\nfound " + countWinNumbers + " winning numbers and " + countSuppNumbers + " supplementary numbers in Game: " + (i + 1));
-            }//end DipslayNumbers
+                Console.Write("\n\n{0, 13}{1, 1}{2, 1}{3, 1}{4, 1}{5, 1}\n\n", "found ", countWinNumbers, " winning numbers and ", countSuppNumbers, " supplementary numbers in Game: ", (i + 1));
+            }
+        }//end DipslayMatchNumbers
 
-        }
-
-        static int MatchNumbers(int[] game, int[] numbers)
-        {
+        static int MatchNumbers(int[] game, int[] winOrSuppNumbers) {
+           
             int countMatchedNumbers = 0;
-            // int winningPosition = 5;
-            // int winningSupp = 0;
 
-
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                for (int j = 0; j < game.Length; j++)
-                {
-                    if (numbers[i] == game[j])
-                    {
+            // Itterate through each number in game
+            for (int i = 0; i < winOrSuppNumbers.Length; i++) {
+                
+                // Itterate through each number in winOrSuppNumbers
+                for (int j = 0; j < game.Length; j++) {
+                    
+                    // Check if there is a match
+                    if (winOrSuppNumbers[i] == game[j]) {
+                       
+                        // Increase the count by 1 for each match
                         countMatchedNumbers += 1;
                     }
                 }
             }
 
             return countMatchedNumbers;
-        }
+        }//end MatchedNumbers
 
         static void ExitProgram() {
+            
             Console.Write("\n\nPress any key to exit program: ");
             Console.ReadKey();
         }//end ExitProgram
