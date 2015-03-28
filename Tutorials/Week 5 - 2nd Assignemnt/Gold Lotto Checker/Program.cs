@@ -90,6 +90,11 @@ namespace Gold_Lotto_Checker
             Console.Write("{0}\n", DisplayNumbers(numbers));
         }//end DisplayDrawArray
 
+        /* Constructs a string using all the values in an array
+        * 
+        * Precondition: none
+        * postcondition: Returns a string with each value from an array
+        */       
         static string DisplayNumbers(int[] numbers) {
             string number = "";
 
@@ -101,6 +106,11 @@ namespace Gold_Lotto_Checker
             return number;
         }//end DipslayNumbers
 
+        /* Finds either winning or supplamentary numbers in an array
+         * 
+         * Precondition: none
+         * postcondition: Returns an array containing winning (first 6) or supplametary (last 2) numbers
+         */
         static int[] FindWinOrSuppNumbers(int[] numbers, int position, bool type) {
             // Create an array to store the winning numbers
             int[] winOrSuppumbers = new int[position];
@@ -137,6 +147,11 @@ namespace Gold_Lotto_Checker
             }
         }//end DipslayMatchNumbers
 
+        /* Counts the number of winning or supplamentary numbers in an array
+         * 
+         * Precondition: none
+         * postcondition: Returns an int equal to the number of matches found
+         */
         static int MatchNumbers(int[] game, int[] winOrSuppNumbers) {
             int countMatchedNumbers = 0;
 

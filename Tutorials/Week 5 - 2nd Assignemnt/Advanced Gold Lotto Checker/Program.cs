@@ -76,9 +76,13 @@ namespace Advanced_Gold_Lotto_Checker {
             ExitProgram();
         }//end Main
 
+        /* Loops through each game in lottoGames and populates it with 6 generated numbers
+        * 
+        * Precondition: none
+        * postcondition: Returns a populated 2D array
+        */
         static int[][] GenerateLottoGames(int[][] lottoGames) {
-            for (int i = 0; i < lottoGames.Length; i++) {
-                
+            for (int i = 0; i < lottoGames.Length; i++) {             
                 // For each game in lottoGames generate 6 random unique numbers
                 lottoGames[i] = GenerateUniqueNumber(lottoGames[i], lottoGames[i][0]);
             } //end generation of numbers for each lotto game
@@ -86,8 +90,14 @@ namespace Advanced_Gold_Lotto_Checker {
             return lottoGames;
         } //end GenerateLottoGames
 
-       static int[] GenerateUniqueNumber(int[] gameNumbers, int position) {            
-           
+        /* Populates an array with a random generated number.
+         * It then checks to make sure that the number does not alrady exist in the array.
+         * If it does it will call iteself, passing where to start in the array (position)
+        * 
+        * Precondition: none
+        * postcondition: Returns an array with random unique numbers
+        */
+       static int[] GenerateUniqueNumber(int[] gameNumbers, int position) {                      
            // Start at the specified position in the array
            for (int i = position; i < gameNumbers.Length; i++) {
                
@@ -108,8 +118,7 @@ namespace Advanced_Gold_Lotto_Checker {
            return gameNumbers;
         } //end GenerateUniqueNumber
 
-        static void DisplayMessage(string message) {
-            
+        static void DisplayMessage(string message) {           
             // Display the message passed in
             Console.Write("\n\n{0, 40}\n\n\n\n\n", message);
         }//end DisplayMessage
@@ -135,6 +144,11 @@ namespace Advanced_Gold_Lotto_Checker {
             Console.Write("{0}\n", DisplayNumbers(numbers));
         }//end DisplayDrawArray
 
+        /* Constructs a string using all the values in an array
+       * 
+       * Precondition: none
+       * postcondition: Returns a string with each value from an array
+       */       
         static string DisplayNumbers(int[] numbers){
             string number = "";
 
@@ -147,6 +161,11 @@ namespace Advanced_Gold_Lotto_Checker {
             return number;
         }//end DipslayNumbers
 
+        /* Finds either winning or supplamentary numbers in an array
+        * 
+        * Precondition: none
+        * postcondition: Returns an array containing winning (first 6) or supplametary (last 2) numbers
+        */
         static int[] FindWinOrSuppNumbers(int[] numbers, int position, bool type) {
             
             // Create an array to store the winning numbers
@@ -187,6 +206,11 @@ namespace Advanced_Gold_Lotto_Checker {
             }
         }//end DipslayMatchNumbers
 
+        /* Counts the number of winning or supplamentary numbers in an array
+        * 
+        * Precondition: none
+        * postcondition: Returns an int equal to the number of matches found
+        */
         static int MatchNumbers(int[] game, int[] winOrSuppNumbers) {
            
             int countMatchedNumbers = 0;
