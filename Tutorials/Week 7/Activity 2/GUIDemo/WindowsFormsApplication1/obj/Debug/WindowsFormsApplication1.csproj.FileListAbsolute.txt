@@ -1,1 +1,10 @@
 C:\Workspace\CAB201\Tutorials\Week 7\Activity 2\GUIDemo\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Workspace\CAB201\Tutorials\Week 7\Activity 2\GUIDemo\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Workspace\CAB201\Tutorials\Week 7\Activity 2\GUIDemo\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Workspace\CAB201\Tutorials\Week 7\Activity 2\GUIDemo\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Workspace\CAB201\Tutorials\Week 7\Activity 2\GUIDemo\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.DemoForm.resources
+C:\Workspace\CAB201\Tutorials\Week 7\Activity 2\GUIDemo\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Workspace\CAB201\Tutorials\Week 7\Activity 2\GUIDemo\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Workspace\CAB201\Tutorials\Week 7\Activity 2\GUIDemo\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Workspace\CAB201\Tutorials\Week 7\Activity 2\GUIDemo\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Workspace\CAB201\Tutorials\Week 7\Activity 2\GUIDemo\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.EnterTextForm.resources
