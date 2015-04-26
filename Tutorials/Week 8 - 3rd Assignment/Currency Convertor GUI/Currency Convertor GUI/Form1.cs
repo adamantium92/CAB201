@@ -14,7 +14,6 @@ namespace Currency_Convertor_GUI {
 
         public Form1() {
             InitializeComponent();
-            // Initialse combobox week 5 slide 31
             Form1_loadComboBox();
         }
 
@@ -52,84 +51,91 @@ namespace Currency_Convertor_GUI {
                         break;
                     default: country = "Unknown Currency Code";
                         break;
-                }
-               
+                }             
                 // Add the Country and currency code to both combobox items
                 convertFromComboBox.Items.Add(country + " (" + code + ")");
                 convertToComboBox.Items.Add(country + " (" + code + ")");
-            }
+            } // end foreach loop
         }
-
-        
+       
         private void convertFromComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             convertToComboBox.Enabled = true;
-            convertFromComboBox.Enabled = false; 
+            convertFromComboBox.Enabled = false;
+            // Extract the text inside the parentheses and store in the label
+            currentCodeLabel.Text = convertFromComboBox.Text.Split('(',')')[1];
         }
 
         private void convertToComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             convertToComboBox.Enabled = false;
             currentAmountTextBox.Enabled = true;
-           // currentCodeLabel.Text = convertFromComboBox.SelectedText; 
-           // currentCodeLabel.Visible = true; 
-        }
-
-       
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
+            // Extract the text inside the parentheses and store in the label
+            desiredCodeLabel.Text = convertToComboBox.Text.Split('(', ')')[1];
+            currentCodeLabel.Visible = true;           
         }
 
         private void anotherConversionRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (yesRadioButton.Checked)
             {
-                // Refresh the form
+                // Disable controlls
+                convertFromComboBox.Enabled = true;
+                convertToComboBox.Enabled = false;
+                
+                // Hide controlls
+                groupBox1.Visible = false;
+                currentCodeLabel.Visible = false;
+                desiredCodeLabel.Visible = false;
+
+                // Reset controlls
+                yesRadioButton.Checked = false;
+                convertFromComboBox.Text = "";
+                convertToComboBox.Text = "";
+                currentAmountTextBox.Text = "";
+                desiredAmountTextBox.Text = "";
             }
             else if (noRadioButton.Checked)
             {
                 // Close the application
-            }
-           
-           
+                Close();
+            }          
         }
 
         private void currentAmountTextBox_TextChanged(object sender, EventArgs e)
         {
-            // int value = Convert.ToInt32(currentAmountTextBox.Text);
-            int parsedValue;
-            if (!int.TryParse(currentAmountTextBox.Text, out parsedValue))
-            {
-                //currentAmountTextBox.Text = "";
-                MessageBox.Show("Please enter a positive numeric value.");
-                calcConversionButton.Enabled = false;
-                
-            }
-            else if (parsedValue < 0)
-            {
-                currentAmountTextBox.Text = "";
-                MessageBox.Show("Please enter a positive numeric value.");
-                calcConversionButton.Enabled = false;
-               
-            }
-            else
-            {
-                calcConversionButton.Enabled = true; 
-            }
-
-           
-            // Check for Type int or float
-            // True check for positive (if x is > 0) - True enable calcConversionButton & Disable convertToComboBox/ False error message 
-            // False error message
+            calcConversionButton.Enabled = true;
         }
 
         private void calcConversionButton_Click(object sender, EventArgs e)
         {
-            // Call method to calculate conversion
-            // Dispaly in desiredAmountTextBox
-            // Diable currentAmountTextBox
-            // Make visible radio buttons
+            double textBoxDoubleVal;
+            // Validate the user entered only numerical values
+            if (!double.TryParse(currentAmountTextBox.Text, out textBoxDoubleVal))
+            {
+                // If non-numerical values are entered, clear the textBox
+                currentAmountTextBox.Text = "";
+                // Display corresponding error message
+                MessageBox.Show("Please only enter numerical values.");
+                calcConversionButton.Enabled = false;
+            }
+            // Check if enetered value is a negative
+            else if (textBoxDoubleVal < 0)
+            {
+                // If a negative is detected clear the textBox
+                currentAmountTextBox.Text = "";
+                // Display corresponding error message
+                MessageBox.Show("Please enter a positive numeric value.");
+                calcConversionButton.Enabled = false;
+            }
+            else
+            {
+                // Pass all entered values to the currencyConversion. Round to 2 decimal places and convert to a string 
+                desiredAmountTextBox.Text = Math.Round(Currency_Exchange.currencyConversion(Convert.ToDouble(currentAmountTextBox.Text), currentCodeLabel.Text, desiredCodeLabel.Text), 2).ToString();
+                desiredCodeLabel.Visible = true;
+                currentAmountTextBox.Enabled = false;
+                groupBox1.Visible = true;   
+            }      
         }
     }//end class 
 }

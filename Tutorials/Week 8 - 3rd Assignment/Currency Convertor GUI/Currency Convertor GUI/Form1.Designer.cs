@@ -43,36 +43,40 @@
             // currencyHaveLabel
             // 
             this.currencyHaveLabel.AutoSize = true;
+            this.currencyHaveLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currencyHaveLabel.Location = new System.Drawing.Point(60, 70);
             this.currencyHaveLabel.Name = "currencyHaveLabel";
-            this.currencyHaveLabel.Size = new System.Drawing.Size(82, 13);
+            this.currencyHaveLabel.Size = new System.Drawing.Size(97, 13);
             this.currencyHaveLabel.TabIndex = 0;
             this.currencyHaveLabel.Text = "Currency I have";
             // 
             // currencyWantLabel
             // 
             this.currencyWantLabel.AutoSize = true;
-            this.currencyWantLabel.Location = new System.Drawing.Point(296, 70);
+            this.currencyWantLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currencyWantLabel.Location = new System.Drawing.Point(323, 70);
             this.currencyWantLabel.Name = "currencyWantLabel";
-            this.currencyWantLabel.Size = new System.Drawing.Size(81, 13);
+            this.currencyWantLabel.Size = new System.Drawing.Size(96, 13);
             this.currencyWantLabel.TabIndex = 1;
             this.currencyWantLabel.Text = "Currency I want";
             // 
             // amountHaveLabel
             // 
             this.amountHaveLabel.AutoSize = true;
+            this.amountHaveLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amountHaveLabel.Location = new System.Drawing.Point(60, 147);
             this.amountHaveLabel.Name = "amountHaveLabel";
-            this.amountHaveLabel.Size = new System.Drawing.Size(76, 13);
+            this.amountHaveLabel.Size = new System.Drawing.Size(89, 13);
             this.amountHaveLabel.TabIndex = 2;
             this.amountHaveLabel.Text = "Amount I have";
             // 
             // amountWantLabel
             // 
             this.amountWantLabel.AutoSize = true;
+            this.amountWantLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amountWantLabel.Location = new System.Drawing.Point(323, 147);
             this.amountWantLabel.Name = "amountWantLabel";
-            this.amountWantLabel.Size = new System.Drawing.Size(75, 13);
+            this.amountWantLabel.Size = new System.Drawing.Size(88, 13);
             this.amountWantLabel.TabIndex = 3;
             this.amountWantLabel.Text = "Amount I want";
             // 
@@ -89,7 +93,7 @@
             // 
             this.convertToComboBox.Enabled = false;
             this.convertToComboBox.FormattingEnabled = true;
-            this.convertToComboBox.Location = new System.Drawing.Point(299, 86);
+            this.convertToComboBox.Location = new System.Drawing.Point(326, 86);
             this.convertToComboBox.Name = "convertToComboBox";
             this.convertToComboBox.Size = new System.Drawing.Size(162, 21);
             this.convertToComboBox.TabIndex = 6;
@@ -115,9 +119,10 @@
             // calcConversionButton
             // 
             this.calcConversionButton.Enabled = false;
-            this.calcConversionButton.Location = new System.Drawing.Point(194, 160);
+            this.calcConversionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calcConversionButton.Location = new System.Drawing.Point(194, 155);
             this.calcConversionButton.Name = "calcConversionButton";
-            this.calcConversionButton.Size = new System.Drawing.Size(75, 23);
+            this.calcConversionButton.Size = new System.Drawing.Size(75, 32);
             this.calcConversionButton.TabIndex = 9;
             this.calcConversionButton.Text = "equals";
             this.calcConversionButton.UseVisualStyleBackColor = true;
@@ -126,9 +131,10 @@
             // yesRadioButton
             // 
             this.yesRadioButton.AutoSize = true;
+            this.yesRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yesRadioButton.Location = new System.Drawing.Point(33, 30);
             this.yesRadioButton.Name = "yesRadioButton";
-            this.yesRadioButton.Size = new System.Drawing.Size(43, 17);
+            this.yesRadioButton.Size = new System.Drawing.Size(46, 17);
             this.yesRadioButton.TabIndex = 10;
             this.yesRadioButton.TabStop = true;
             this.yesRadioButton.Text = "Yes";
@@ -138,9 +144,10 @@
             // noRadioButton
             // 
             this.noRadioButton.AutoSize = true;
+            this.noRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noRadioButton.Location = new System.Drawing.Point(33, 53);
             this.noRadioButton.Name = "noRadioButton";
-            this.noRadioButton.Size = new System.Drawing.Size(39, 17);
+            this.noRadioButton.Size = new System.Drawing.Size(41, 17);
             this.noRadioButton.TabIndex = 11;
             this.noRadioButton.TabStop = true;
             this.noRadioButton.Text = "No";
@@ -151,6 +158,7 @@
             // 
             this.groupBox1.Controls.Add(this.noRadioButton);
             this.groupBox1.Controls.Add(this.yesRadioButton);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(161, 224);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(142, 89);
@@ -158,25 +166,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Another Conversion?";
             this.groupBox1.Visible = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // currentCodeLabel
             // 
             this.currentCodeLabel.AutoSize = true;
-            this.currentCodeLabel.Enabled = false;
-            this.currentCodeLabel.Location = new System.Drawing.Point(20, 163);
+            this.currentCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentCodeLabel.Location = new System.Drawing.Point(23, 166);
             this.currentCodeLabel.Name = "currentCodeLabel";
-            this.currentCodeLabel.Size = new System.Drawing.Size(0, 13);
+            this.currentCodeLabel.Size = new System.Drawing.Size(36, 13);
             this.currentCodeLabel.TabIndex = 14;
+            this.currentCodeLabel.Text = "Code";
             this.currentCodeLabel.Visible = false;
             // 
             // desiredCodeLabel
             // 
             this.desiredCodeLabel.AutoSize = true;
-            this.desiredCodeLabel.Location = new System.Drawing.Point(285, 166);
+            this.desiredCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.desiredCodeLabel.Location = new System.Drawing.Point(288, 165);
             this.desiredCodeLabel.Name = "desiredCodeLabel";
-            this.desiredCodeLabel.Size = new System.Drawing.Size(0, 13);
+            this.desiredCodeLabel.Size = new System.Drawing.Size(36, 13);
             this.desiredCodeLabel.TabIndex = 15;
+            this.desiredCodeLabel.Text = "Code";
             this.desiredCodeLabel.Visible = false;
             // 
             // Form1
@@ -197,7 +207,7 @@
             this.Controls.Add(this.currencyWantLabel);
             this.Controls.Add(this.currencyHaveLabel);
             this.Name = "Form1";
-            this.Text = "Currency I have";
+            this.Text = "Currency Converter";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
