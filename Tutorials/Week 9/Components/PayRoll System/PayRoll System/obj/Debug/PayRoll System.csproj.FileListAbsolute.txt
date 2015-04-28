@@ -1,0 +1,21 @@
+c:\users\roggenka\documents\visual studio 2012\Projects\PayRoll System\PayRoll System\obj\Debug\PayRoll System.csprojResolveAssemblyReference.cache
+c:\users\roggenka\documents\visual studio 2012\Projects\PayRoll System\PayRoll System\bin\Debug\PayRoll System.dll
+c:\users\roggenka\documents\visual studio 2012\Projects\PayRoll System\PayRoll System\bin\Debug\PayRoll System.pdb
+c:\users\roggenka\documents\visual studio 2012\Projects\PayRoll System\PayRoll System\bin\Debug\Employee Class Library.dll
+c:\users\roggenka\documents\visual studio 2012\Projects\PayRoll System\PayRoll System\bin\Debug\Employee Class Library.pdb
+c:\users\roggenka\documents\visual studio 2012\Projects\PayRoll System\PayRoll System\obj\Debug\PayRoll System.dll
+c:\users\roggenka\documents\visual studio 2012\Projects\PayRoll System\PayRoll System\obj\Debug\PayRoll System.pdb
+C:\Users\roggenka\Documents\Visual Studio 2012\Projects\Sandpit\PayRoll System\PayRoll System\bin\Debug\PayRoll System.dll
+C:\Users\roggenka\Documents\Visual Studio 2012\Projects\Sandpit\PayRoll System\PayRoll System\bin\Debug\PayRoll System.pdb
+C:\Users\roggenka\Documents\Visual Studio 2012\Projects\Sandpit\PayRoll System\PayRoll System\bin\Debug\Employee Class Library.dll
+C:\Users\roggenka\Documents\Visual Studio 2012\Projects\Sandpit\PayRoll System\PayRoll System\bin\Debug\Employee Class Library.pdb
+C:\Users\roggenka\Documents\Visual Studio 2012\Projects\Sandpit\PayRoll System\PayRoll System\obj\Debug\PayRoll System.csprojResolveAssemblyReference.cache
+C:\Users\roggenka\Documents\Visual Studio 2012\Projects\Sandpit\PayRoll System\PayRoll System\obj\Debug\PayRoll System.dll
+C:\Users\roggenka\Documents\Visual Studio 2012\Projects\Sandpit\PayRoll System\PayRoll System\obj\Debug\PayRoll System.pdb
+C:\Workspace\CAB201\Tutorials\Week 9\Components\PayRoll System\PayRoll System\obj\Debug\PayRoll System.csprojResolveAssemblyReference.cache
+C:\Workspace\CAB201\Tutorials\Week 9\Components\PayRoll System\PayRoll System\obj\Debug\PayRoll System.dll
+C:\Workspace\CAB201\Tutorials\Week 9\Components\PayRoll System\PayRoll System\obj\Debug\PayRoll System.pdb
+C:\Workspace\CAB201\Tutorials\Week 9\Components\PayRoll System\PayRoll System\bin\Debug\PayRoll System.dll
+C:\Workspace\CAB201\Tutorials\Week 9\Components\PayRoll System\PayRoll System\bin\Debug\PayRoll System.pdb
+C:\Workspace\CAB201\Tutorials\Week 9\Components\PayRoll System\PayRoll System\bin\Debug\Employee Class Library.dll
+C:\Workspace\CAB201\Tutorials\Week 9\Components\PayRoll System\PayRoll System\bin\Debug\Employee Class Library.pdb
