@@ -64,7 +64,7 @@ namespace Currency_Convertor_GUI {
             double desiredXRate = xRates[findCurrencyPosition(desiredCode)];
 
             // Insert the values into the equation
-            double desiredAmount = (currentAmount * currentXRate) / desiredXRate;
+            double desiredAmount = (currentAmount / currentXRate) * desiredXRate;
 
             return desiredAmount;
         }
